@@ -28,6 +28,13 @@ type Token struct {
 }
 
 func (t Token) String() string {
+	if t.Type == Eol {
+		return fmt.Sprintf("val: End of line, type: Eol")
+	}
+
+	if t.Type == Eof {
+		return fmt.Sprintf("val: End of file, type: Eof")
+	}
 	return fmt.Sprintf("val: %s, type: %s", t.Val, TokenTypeMap[t.Type])
 }
 
@@ -76,7 +83,8 @@ const (
 	If     // if
 	Else   // else
 	Return // return
-	Eof
+	Eof    // end of file
+	Eol    // end of line
 )
 
 // TokenTypeMap mapping TokenType with its
@@ -120,6 +128,9 @@ var TokenTypeMap = map[TokenType]string{
 	If:     "IF",
 	Else:   "ELSE",
 	Return: "RETURN",
+
+	Eof: "EOF",
+	Eol: "EOL",
 }
 
 var keywords = map[string]TokenType{
