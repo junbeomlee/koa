@@ -262,7 +262,6 @@ func (sl *StringLiteral) produce() {}
 
 func (sl *StringLiteral) String() string {
 	return sl.Value
-	//return fmt.Sprintf("\"%s\"", sl.Value)
 }
 
 // Represent integer literal
